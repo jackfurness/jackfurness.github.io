@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Its my birthday!"
+title:  "Its my birthday"
 date:   2013-09-05 21:00:00
 categories: birthday
 ---
