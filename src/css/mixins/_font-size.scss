@@ -1,0 +1,10 @@
+// Calculates font-size as REM and provides px fallback
+// Required: typography partial, strip-units function
+
+@mixin font-size($px, $base: $base-font-size) {
+	@if not unitless($px) {
+		$px: strip-units($px);
+	}
+	font-size: $px * 1px;
+	font-size: rem($px, $base);
+}

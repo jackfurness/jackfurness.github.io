@@ -1,0 +1,12 @@
+// Converts given pixel value to REM. Used base font size specified in typography partial by default
+// Requires: typography partial, strip-units function
+
+@function rem($px, $base: $base-font-size) {
+	@if not unitless($px) {
+		$px: strip-units($px);
+	}
+	@if not unitless($base) {
+		$base: strip-units($base);
+	}
+	@return ($px / $base) * 1rem;
+}

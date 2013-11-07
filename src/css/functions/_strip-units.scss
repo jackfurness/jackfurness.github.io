@@ -1,0 +1,5 @@
+// Returns unitless value, i.e. 14px => 14, 7em => 7, 1.4rem => 1.4
+
+@function strip-units($val) {
+	@return ($val / ($val * 0 + 1));
+}

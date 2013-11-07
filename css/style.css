@@ -671,19 +671,16 @@ header h1 {
 .main-heading {
   text-transform: uppercase;
   text-align: center;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: italic;
   font-weight: 100;
   font-size: 119px;
   font-size: 7.4375rem;
   margin: 0 0 0.19208em;
-  background: #fafafa;
-  color: #fff;
+  color: #444;
   -webkit-text-fill-color: transparent;
-  background-color: #fafafa;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fafafa), color-stop(10%, #d11250), color-stop(38%, #008f68), color-stop(62%, #006899), color-stop(90%, #db5800), color-stop(100%, #fafafa));
   background-image: -webkit-linear-gradient(-360deg, #fafafa 0%, #d11250 10%, #008f68 38%, #006899 62%, #db5800 90%, #fafafa 100%);
-  background-image: linear-gradient(90deg,#fafafa 0%, #d11250 10%, #008f68 38%, #006899 62%, #db5800 90%, #fafafa 100%);
   -webkit-background-clip: text;
   display: inline-block;
   vertical-align: baseline;
@@ -699,7 +696,7 @@ header h1 {
 }
 
 .faux-subheading {
-  font-family: 'Vollkorn', serif;
+  font-family: "Vollkorn", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 28px;
   font-size: 1.75rem;
   margin: 0 0 0.81633em;
@@ -737,7 +734,7 @@ nav ul:last-child {
 }
 nav ul li {
   float: right;
-  font-family: 'Vollkorn', serif;
+  font-family: "Vollkorn", Georgia, Cambria, "Times New Roman", Times, serif;
   float: right;
   padding: 15px 15px 0 15px;
 }
@@ -764,7 +761,7 @@ nav ul li a i {
   width: 50px;
   display: block;
   text-align: center;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: italic;
   font-weight: 100;
 }
@@ -780,7 +777,7 @@ nav ul li a i {
   float: left;
   margin-right: 2.35765%;
   width: 65.88078%;
-  font-family: 'Vollkorn', serif;
+  font-family: "Vollkorn", Georgia, Cambria, "Times New Roman", Times, serif;
   background: #d11250;
   padding: 2em 0;
 }
@@ -800,14 +797,41 @@ ul.posts > li {
   margin-bottom: 2em;
   padding: 2em;
 }
-ul.posts > li h3 {
+ul.posts > li .blog-heading {
   text-align: center;
 }
-ul.posts > li h3 a {
+ul.posts > li .blog-heading a {
   color: #fafafa;
   border-bottom: 2px solid #fafafa;
   padding-bottom: 10px;
   display: inline-block;
+  -webkit-transition: all 0.8s linear;
+  -moz-transition: all 0.8s linear;
+  transition: all 0.8s linear;
+  z-index: 99;
+  position: relative;
+}
+ul.posts > li .blog-heading a:hover {
+  border-color: #d11250;
+  z-index: 0;
+}
+ul.posts > li .blog-heading a:hover + .blog-heading-bullet {
+  background: #fafafa;
+  z-index: 99;
+}
+ul.posts > li .blog-heading .blog-heading-bullet {
+  height: 10px;
+  width: 10px;
+  color: #333;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #d11250;
+  margin-top: -5px;
+  position: relative;
+  -webkit-transition: all 0.8s linear;
+  -moz-transition: all 0.8s linear;
+  transition: all 0.8s linear;
 }
 ul.posts > li .blog-date {
   display: block;
@@ -816,7 +840,7 @@ ul.posts > li .blog-date {
 }
 
 footer {
-  font-family: 'Vollkorn', serif;
+  font-family: "Vollkorn", Georgia, Cambria, "Times New Roman", Times, serif;
   background: #006899;
   color: #fafafa;
   padding: 10px 0;

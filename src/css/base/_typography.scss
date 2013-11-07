@@ -1,0 +1,237 @@
+$modular-scale: 1.333 !default; //perfect fourth 3:4;
+
+$base-body-color: #444 !default;
+$base-heading-color: #222 !default;
+
+$base-font-family: $helvetica !default;
+$base-font-size: 16px !default;
+$base-font-weight: 500 !default;
+
+$base-line-height: 1.428571429 !default;
+$base-line-height-computed: floor($base-font-size * $base-line-height);
+$base-paragraph-spacing: floor($base-line-height-computed/2);
+
+$link-color: #444 !default;
+
+$font-size-minus-1: floor(modular-scale($base-font-size, -1, $modular-scale));
+$font-size-0: $base-font-size;
+$font-size-1: floor(modular-scale($base-font-size, 1, $modular-scale));
+$font-size-2: floor(modular-scale($base-font-size, 2, $modular-scale));
+$font-size-3: floor(modular-scale($base-font-size, 3, $modular-scale));
+$font-size-4: floor(modular-scale($base-font-size, 4, $modular-scale));
+
+$font-size-0: floor(modular-scale($base-font-size, 0, $modular-scale)); //base & h6
+$font-size-1: floor(modular-scale($base-font-size, 1, $modular-scale)); //h5
+$font-size-2: floor(modular-scale($base-font-size, 2, $modular-scale)); //h4
+$font-size-3: floor(modular-scale($base-font-size, 3, $modular-scale)); //h3
+$font-size-4: floor(modular-scale($base-font-size, 4, $modular-scale)); //h2
+$font-size-5: floor(modular-scale($base-font-size, 5, $modular-scale)); //h1
+$font-size-6: floor(modular-scale($base-font-size, 6, $modular-scale)); //super-size-1
+$font-size-7: floor(modular-scale($base-font-size, 7, $modular-scale)); //super-size-2
+$font-size-8: floor(modular-scale($base-font-size, 8, $modular-scale)); //super-size-3
+
+
+// Typography specific, does not belong in global functions
+@function measure-margin($font-size, $base-font-size: $base-font-size, $base-line-height: $base-line-height, $measure: "em", $multiplier: 1) {
+	@return ((($base-font-size * $base-line-height) / $font-size)*$multiplier) * 1#{$measure};
+}
+
+html {
+	font-family: $base-font-family;
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+	color: $base-body-color;
+}
+
+%heading {
+	font-weight: $base-font-weight;
+	text-rendering: optimizeLegibility;
+	line-height: 1; //when headings wrap onto multiple lines
+	margin: 0 0 $base-paragraph-spacing;
+	color: $base-heading-color;
+}
+
+.subsize-1, .subsize-2, .subsize-3 {
+	text-rendering: optimizeLegibility;
+}
+
+p {
+	margin: 0 0 measure-margin($base-font-size);
+}
+
+a {
+	color: $link-color;
+	text-decoration: none;
+	@include transition(color 0.1s linear);
+	&:hover, &:focus {
+		color: darken($link-color, 10%);
+	}
+	&:focus {
+		outline: thin dotted #333;
+		outline-offset: -2px;
+	}
+}
+
+img {
+	vertical-align: middle;
+}
+
+@mixin super-size-3 {
+	@extend %heading;
+	@include font-size($font-size-8);
+	margin: 0 0 measure-margin($font-size-8);
+}
+
+@mixin super-size-2 {
+	@extend %heading;
+	@include font-size($font-size-7);
+	margin: 0 0 measure-margin($font-size-7);
+}
+
+@mixin super-size-1 {
+	@extend %heading;
+	@include font-size($font-size-6);
+	margin: 0 0 measure-margin($font-size-6);
+}
+@mixin h1 {
+	@extend %heading;
+	@include font-size($font-size-5);
+	margin: 0 0 measure-margin($font-size-5);
+}
+@mixin h2 {
+	@extend %heading;
+	@include font-size($font-size-4);
+	margin: 0 0 measure-margin($font-size-4);
+	padding-top: measure-margin($font-size-4, $multiplier: 0.75);
+}
+@mixin h3 {
+	@extend %heading;
+	@include font-size($font-size-3);
+	margin: 0 0 measure-margin($font-size-3);
+	padding-top: measure-margin($font-size-3, $multiplier: 0.75);
+}
+@mixin h4 {
+	@extend %heading;
+	@include font-size($font-size-2);
+	margin: 0 0 measure-margin($font-size-2);
+	padding-top: measure-margin($font-size-2, $multiplier: 0.75);
+}
+@mixin h5 {
+	@extend %heading;
+	@include font-size($font-size-1);
+	margin: 0 0 measure-margin($font-size-1);
+	padding-top: measure-margin($font-size-1, $multiplier: 0.75);
+}
+@mixin h6 {
+	@extend %heading;
+	@include font-size($font-size-0);
+	margin: 0 0 measure-margin($font-size-0);
+	padding-top: measure-margin($font-size-0, $multiplier: 0.75);
+}
+ 
+h1 {
+	@include h1();  
+}
+
+h2 {
+	@include h2();  
+}
+
+h3 {
+	@include h3();  
+}
+
+h5 {
+	@include h4();  
+}
+
+h6 {
+	@include h4();  
+}
+
+
+.subsize-1 { font-size: 13px; }
+.subsize-2 { font-size: 12px; }
+.subsize-3 { font-size: 11px; }
+
+// Typography helpers taken from Bootstrap 3
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+abbr[title] {
+	cursor: help;
+	border-bottom: 1px dotted #999;
+}
+
+ul, ol {
+	margin-top: 0;
+	margin-bottom: $base-paragraph-spacing;
+}
+
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+	margin-bottom: 0;
+}
+
+.list-inline {
+	padding-left: 0;
+	list-style: none;
+	> li {
+		display: inline-block;
+		padding-right: 5px;
+		padding-left: 5px;
+	}
+}
+
+dl {
+	margin-bottom: $base-paragraph-spacing;
+}
+
+dt { font-weight: bold; }
+dd { margin-left: 0; }
+
+.dl-horizontal {
+	dt {
+		float: left;
+		width: 160px;
+		overflow: hidden;
+		clear: left;
+		text-align: right;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	dd {
+		margin-left: 180px;
+		&:before, &:after {
+			display: table;
+			content: " ";
+		}
+		&:after {
+			clear: both;
+		}
+	}
+}
+
+blockquote {
+	padding: 18px 20px;
+	margin: 0 0 20px;
+	border-left: 5px solid #eee;
+	p {
+		@include font-size($font-size-1);
+	}
+	small {
+		display: block;
+		color: #999;
+		&:before {
+			content: '\2014 \00A0';
+		}
+	}
+}
+
+cite { font-style: normal; }
+
+address { font-style: normal; }

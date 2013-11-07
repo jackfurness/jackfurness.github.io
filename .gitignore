@@ -17,12 +17,10 @@ node_modules
 ### SASS Ignores - "Sassy CSS" http://sass-lang.com/
 *.sass-cache
 
-src/
 node_modules/
-
-package.json
+src/css/neat/
+src/css/bourbon/
 server.js
-Gruntfile.js
 .DS_Store
 
 _site/
