@@ -8,7 +8,7 @@ title: Homepage
 		<li>
 			<h3 class="blog-heading"><a href="{{ post.url }}">{{ post.title }}</a><span class="blog-heading-bullet">&nbsp;</span></h3>
 			<span class="blog-date">{{ post.date | date_to_string }}</span>
-			<p>{{ post.excerpt }}</p>
+			{{ post.excerpt }}
 		</li>
     {% endfor %}
   </ul>
