@@ -31,6 +31,7 @@ $base-body-color: #fff;
 	font-family: 'Vollkorn', $georgia;
 }
 
+
 @import "base/typography";
 
 
@@ -104,7 +105,16 @@ nav {
 			padding: 15px 15px 0 15px;
 			a {
 				i {
-					margin-right: 5px;
+					margin-right: 5px;	
+					border-radius: 50%;
+					padding: 5px;
+					@include transition (background 0.3s linear);
+				}
+				&:hover {
+					i {
+					background: rgba(0,0,0,0.4);
+					color: #fff;
+					}
 				}
 			}
 		}
@@ -115,16 +125,23 @@ nav {
 .logo {
 	@include span-columns(2);
 	.logo-inner {
-		color: #fafafa;
+		color: #444;
 		font-weight: 100;
-		border: 2px solid #fafafa;
+		background: #fafafa;
 		border-radius: 50%;
-		font-size: 30px;
+		font-size: 33px;
 		height: 50px;
 		width: 50px;
 		display: block;
 		text-align: center;
-		@include heading-font();
+		@include copy-font();
+		font-style: italic;
+		@include transition (all 0.8s linear);
+		&:hover {
+			background: #444;
+			background: rgba(0,0,0,0.4);
+			color: #fff;
+		}
 	}
 }
 
@@ -152,27 +169,27 @@ ul.posts {
 	margin-bottom: 2em;
 	> li {
 		margin-bottom: 2em;
-		padding: 2em;
+		padding: 2em 0;
 		.blog-heading {
-			text-align: center;
+			font-style: italic;
 			a {
 				color: #fafafa;
-				border-bottom: 2px solid #fafafa;
+				//border-bottom: 2px solid #fafafa;
 				padding-bottom: 10px;
 				display: inline-block;
-				@include transition (all 0.8s linear);
-				z-index: 99;
+				//@include transition (all 0.8s linear);
+				//z-index: 99;
 				position: relative;
-				&:hover {
-					border-color: $color-red;
-					z-index: 0;
-					+ .blog-heading-bullet {
-						background: #fafafa;
-						z-index: 99;
-					}
-				}
+				//&:hover {
+					//border-color: $color-red;
+					//z-index: 0;
+					//+ .blog-heading-bullet {
+					//	background: #fafafa;
+					//	z-index: 99;
+					//}
+				//}
 			}
-			.blog-heading-bullet {
+			/*.blog-heading-bullet {
 				height: 10px;
 				width: 10px;
 				color: #333;
@@ -183,11 +200,10 @@ ul.posts {
 				margin-top: -5px;
 				position: relative;
 				@include transition (all 0.8s linear);
-			}
+			}*/
 		}
 		.blog-date {
 			display: block;
-			text-align: center;
 			font-size: 13px;
 		}
 	}
